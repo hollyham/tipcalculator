@@ -16,6 +16,16 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let defaults = UserDefaults.standard
+        if (defaults.object(forKey: "tipDefault") != nil){
+            defaultTipSeg.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
+        }
+        defaults.synchronize()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

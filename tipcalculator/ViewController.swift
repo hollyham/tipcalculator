@@ -30,6 +30,7 @@ class ViewController: UIViewController {
             // Changes tipControl to match default selection
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
         }
+        defaults.synchronize()
     }
     
     override func viewDidAppear(_ animated: Bool) {
