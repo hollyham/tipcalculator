@@ -25,12 +25,13 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let defaults = UserDefaults.standard
-        // Will only match current tip % with default setting if new default has been set
-        if (defaults.data(forKey: "tipDefault") != nil && defaults.bool(forKey: "defaultHasChanged") ){
+        if (defaults.object(forKey: "tipDefault") != nil){
             // Changes tipControl to match default selection
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
         }
         defaults.synchronize()
+        
+        calculateTip(self)
     }
     
     override func viewDidAppear(_ animated: Bool) {

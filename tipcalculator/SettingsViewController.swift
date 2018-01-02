@@ -36,7 +36,6 @@ class SettingsViewController: UIViewController {
     @IBAction func changedDefault(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         defaults.set(defaultTipSeg.selectedSegmentIndex, forKey: "tipDefault")
-        defaults.set(true, forKey: "defaultHasChanged")
         defaults.synchronize()
     }
     
