@@ -15,10 +15,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    let formatter = NumberFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.billField.becomeFirstResponder()
+        
+        // Updates text field placeholder to match region's currency
+        formatter.numberStyle = .currency
+        billField.placeholder = formatter.currencySymbol
         
         let defaults = UserDefaults.standard
         if( defaults.object(forKey: "billAmount") != nil ){
@@ -63,8 +69,11 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        // Uses correct currency sign for tip and total
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        tipLabel.text = String(format: "%@", formatter.string(from: tip as NSNumber)! )
+        totalLabel.text = String(format: "%@", formatter.string(from: total as NSNumber)! )
         
         let defaults = UserDefaults.standard
         // Saves entered entered bill amount
