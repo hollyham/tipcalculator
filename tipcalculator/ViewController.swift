@@ -19,6 +19,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.billField.becomeFirstResponder()
+        
+        let defaults = UserDefaults.standard
+        if( defaults.object(forKey: "billAmount") != nil ){
+        let timeAtClose = defaults.object(forKey: "closeTime") as! NSDate
+        let duration = timeAtClose.timeIntervalSinceNow
+        if( duration > -600 ){
+            // Duration is less than 10 minutes (600 seconds)
+            billField.text = defaults.string(forKey: "billAmount")
+        }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,24 +39,15 @@ class ViewController: UIViewController {
             // Changes tipControl to match default selection
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
         }
+        
         defaults.synchronize()
         
         calculateTip(self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("view did appear")
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("view will disappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("view did disappear")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +65,13 @@ class ViewController: UIViewController {
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+        
+        let defaults = UserDefaults.standard
+        // Saves entered entered bill amount
+        defaults.set(billField.text, forKey: "billAmount")
+        defaults.set(Date(), forKey: "closeTime")
+        
+        defaults.synchronize()
     }
 }
 
