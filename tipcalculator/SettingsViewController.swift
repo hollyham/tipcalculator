@@ -11,6 +11,9 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultTipSeg: UISegmentedControl!
+    @IBOutlet weak var defaultSplitSeg: UISegmentedControl!
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +23,11 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let defaults = UserDefaults.standard
         if (defaults.object(forKey: "tipDefault") != nil){
             defaultTipSeg.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
+        }
+        if(defaults.object(forKey: "splitDefault") != nil){
+            defaultSplitSeg.selectedSegmentIndex = defaults.integer(forKey: "splitDefault")
         }
         defaults.synchronize()
     }
@@ -34,11 +39,14 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func changedDefault(_ sender: AnyObject) {
-        let defaults = UserDefaults.standard
         defaults.set(defaultTipSeg.selectedSegmentIndex, forKey: "tipDefault")
         defaults.synchronize()
     }
     
+    @IBAction func changedSplitDefault(_ sender: Any) {
+        defaults.set(defaultSplitSeg.selectedSegmentIndex, forKey: "splitDefault")
+        defaults.synchronize()
+    }
     /*
     // MARK: - Navigation
 

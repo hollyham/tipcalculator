@@ -194,12 +194,32 @@
                                     <action selector="changedDefault:" destination="4w1-4u-c0I" eventType="valueChanged" id="3I9-L0-lTI"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Default Split Selection " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VKo-cm-wDu">
+                                <rect key="frame" x="16" y="177" width="180" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="W4w-ER-5ni">
+                                <rect key="frame" x="16" y="230" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Split Bill"/>
+                                    <segment title="Split Tip"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changedSplitDefault:" destination="4w1-4u-c0I" eventType="valueChanged" id="JqH-iD-A7J"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ASm-Nr-NxI"/>
                     <connections>
+                        <outlet property="defaultSplitSeg" destination="W4w-ER-5ni" id="Jil-X4-QXC"/>
                         <outlet property="defaultTipSeg" destination="9Tm-Ly-tlg" id="beY-TZ-11j"/>
                     </connections>
                 </viewController>

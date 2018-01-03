@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         self.billField.becomeFirstResponder()
         
         // Updates text field placeholder to match region's currency
@@ -55,10 +55,13 @@ class ViewController: UIViewController {
             // Changes tipControl to match default selection
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
         }
+        if (defaults.object(forKey: "splitDefault") != nil){
+            splitControl.selectedSegmentIndex = defaults.integer(forKey: "splitDefault")
+        }
         defaults.synchronize()
-        calculateTip(self)
         
-        emptyFieldCheck(textField: billField)
+        calculateTip(self)
+        //emptyFieldCheck(textField: billField)
         
     }
 
