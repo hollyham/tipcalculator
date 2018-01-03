@@ -4,7 +4,11 @@ TipCalc is a tip calculator application for iOS.
 
 Submitted by: Holly Ham
 
+<<<<<<< HEAD
 Time spent: **20** hours spent in total
+=======
+Time spent: **X** hours spent in total
+>>>>>>> 55a546f1041583121b0c4da54ea3b632ee4e74f0
 
 ## User Stories
 
@@ -14,23 +18,37 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [x] Settings page to change the default tip percentage.
+<<<<<<< HEAD
 * [x] UI animations
 * [x] Remembering the bill amount across app restarts (if <10mins)
 * [x] Using locale-specific currency and currency thousands separators.
+=======
+* [ ] UI animations
+* [ ] Remembering the bill amount across app restarts (if <10mins)
+* [ ] Using locale-specific currency and currency thousands separators.
+>>>>>>> 55a546f1041583121b0c4da54ea3b632ee4e74f0
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 *[x] User input is automatically aligned right, and currency symbol is used as a placeholder
+<<<<<<< HEAD
 *[x] Created custom app icon and splash screen
 *[x] Hidding the keyboard reveals the total cost (or the tip, depending on the user's selection) divided by two, three, and four people
 *[x] Default selector in the selection page for total cost or tip to be divided 
+=======
+*[x]Created custom app icon and splash screen
+>>>>>>> 55a546f1041583121b0c4da54ea3b632ee4e74f0
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
+<<<<<<< HEAD
 <img src='https://imgur.com/mAAeQQn' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+=======
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+>>>>>>> 55a546f1041583121b0c4da54ea3b632ee4e74f0
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
