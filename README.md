@@ -23,12 +23,14 @@ The following **additional** features are implemented:
 
 *[x] User input is automatically aligned right, and currency symbol is used as a placeholder
 *[x] Created custom app icon and splash screen
+*[x] Hidding the keyboard reveals the total cost (or the tip, depending on the user's selection) divided by two, three, and four people
+*[x] Default selector in the selection page for total cost or tip to be divided 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/mAAeQQn' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
