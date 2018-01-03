@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var resultContainer: UIView!
     
     let formatter = NumberFormatter()
+    var resultIsHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +29,17 @@ class ViewController: UIViewController {
         billField.placeholder = formatter.currencySymbol
         
         let defaults = UserDefaults.standard
+        
+        // Checks if there is a saved bill amount
         if( defaults.object(forKey: "billAmount") != nil ){
-        let timeAtClose = defaults.object(forKey: "closeTime") as! NSDate
-        let duration = timeAtClose.timeIntervalSinceNow
-        if( duration > -600 ){
-            // Duration is less than 10 minutes (600 seconds)
-            billField.text = defaults.string(forKey: "billAmount")
-        }
+            let timeAtClose = defaults.object(forKey: "closeTime") as! NSDate
+            let duration = timeAtClose.timeIntervalSinceNow
+            if( duration > -600 ){
+                // Duration is less than 10 minutes (600 seconds)
+                billField.text = defaults.string(forKey: "billAmount")
+            }
+            // Tip and Total should be visible
+            resultIsHidden = false
         }
     }
     
@@ -45,14 +51,10 @@ class ViewController: UIViewController {
             // Changes tipControl to match default selection
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipDefault")
         }
-        
         defaults.synchronize()
-        
         calculateTip(self)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        
+        emptyFieldCheck(textField: billField)
         
     }
 
@@ -66,6 +68,7 @@ class ViewController: UIViewController {
         let tipPercentages = [0.15, 0.18, 0.2]
         
         let bill = Double(billField.text!) ?? 0
+        emptyFieldCheck(textField: billField)
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
@@ -81,6 +84,34 @@ class ViewController: UIViewController {
         defaults.set(Date(), forKey: "closeTime")
         
         defaults.synchronize()
+    }
+    
+    
+    func emptyFieldCheck(textField: UITextField) {
+        
+        // Checks if textfield is empty but result if not hidden
+        if(textField.text == "" && !resultIsHidden){
+            // Hides results
+            UIView.animate(withDuration: 0.2,
+                animations:{
+                    self.tipControl.center.y += self.view.bounds.height
+                    self.resultContainer.center.y += self.view.bounds.height
+                    self.billField.center.y += 80
+                }
+            )
+            resultIsHidden = true
+        }
+        // Checks if there is input in textfield but results are hidden
+        else if(textField.text != "" && resultIsHidden){
+            UIView.animate(withDuration: 0.2,
+                animations: {
+                    self.tipControl.center.y -= self.view.bounds.height
+                    self.resultContainer.center.y -= self.view.bounds.height
+                    self.billField.center.y -= 80
+                }
+            )
+            resultIsHidden = false
+        }
     }
 }
 
