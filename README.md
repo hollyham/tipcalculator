@@ -21,10 +21,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-*[x] User input is automatically aligned right, and currency symbol is used as a placeholder
-*[x] Created custom app icon and splash screen
-*[x] Hiding the keyboard reveals the total cost (or the tip depending on the user's selection) divided among two, three, or four   people
-*[x] Default selector in the settings page for total cost or tip to be divided
+* [x] User input is automatically aligned right, and currency symbol is used as a placeholder
+* [x] Created custom app icon and splash screen
+* [x] Hiding the keyboard reveals the total cost (or the tip depending on the user's selection) divided among two, three, or four   people
+* [x] Default selector in the settings page for total cost or tip to be divided
 
 ## Video Walkthrough
 
